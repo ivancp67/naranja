@@ -1,4 +1,4 @@
-package ceu.dam.ad.ejerciciosTema2.xml.ejercicio11;
+package ceu.dam.ad.ejerciciosTema2.xml.ejercicio11.service;
 
 import java.util.List;
 

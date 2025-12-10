@@ -1,20 +1,20 @@
-package ceu.dam.ad.ejerciciosTema2.xml.ejercicio10.modelo;
+package ceu.dam.ad.castillo.service;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
+import ceu.dam.ad.castillo.model.Castillo;
 import lombok.Data;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
+@JsonRootName("castillos")
 @Data
-@JsonRootName("libros")
-public class Libros {
-
+public class Castillos {
+	
 	@JacksonXmlElementWrapper(useWrapping = false)
-	@JsonProperty("libro")
-	private List<Libro> libros;
-
+	@JsonProperty("castillo")
+	private List<Castillo> castillos;
 
 }

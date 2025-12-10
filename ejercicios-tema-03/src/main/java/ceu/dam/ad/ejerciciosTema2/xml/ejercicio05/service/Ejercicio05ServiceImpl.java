@@ -32,7 +32,6 @@ public class Ejercicio05ServiceImpl implements Ejercicio05Service{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return null;
 		
 	}
 

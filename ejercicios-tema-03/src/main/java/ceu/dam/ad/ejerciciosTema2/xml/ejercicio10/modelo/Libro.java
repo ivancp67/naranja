@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Data;
+import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import tools.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@Data
 public class Libro {
-	private Integer isbn;
-	private String titulo;
-	private List<String> autores;
-	private List<Edicion> ediciones;
 	
-	public Libro() {
-		
-	}
+	@JacksonXmlProperty(isAttribute = true)
+	private Integer isbn;
+	@JsonProperty("titulo")
+	private String titulo;
+	@JacksonXmlElementWrapper(localName = "autores")
+	@JsonProperty("autor")
+	private List<String> autores;
+	@JacksonXmlElementWrapper(localName = "edicion")
+	private List<Edicion> ediciones;
 	
 	public Libro(Integer isbn, String titulo) {
 		super();
@@ -21,31 +31,6 @@ public class Libro {
 		autores = new ArrayList<>();
 		ediciones = new ArrayList<>();
 	}
-	public Integer getIsbn() {
-		return isbn;
-	}
-	public void setIsbn(Integer isbn) {
-		this.isbn = isbn;
-	}
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public List<String> getAutores() {
-		return autores;
-	}
-	public void setAutores(List<String> autores) {
-		this.autores = autores;
-	}
-	public List<Edicion> getEdiciones() {
-		return ediciones;
-	}
-	public void setEdiciones(List<Edicion> ediciones) {
-		this.ediciones = ediciones;
-	}
-	
 	
 	public static List<Libro> createRandomList(Integer numLibros) {
 		List<Libro> libros = new ArrayList<>();
@@ -56,7 +41,6 @@ public class Libro {
 		return libros;
 		
 	}
-	
 	
 	
 	@Override

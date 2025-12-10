@@ -15,12 +15,15 @@ public class Test {
 	public static void main(String[] args) {
 		
 		CastilloXmlService service = new CastilloXmlServiceImpl();
-		/*
+		
 		try {
-			Castillo castillo = createCastillo();
-			service.exportCastilloToXml("c:/temporal/castillo.xml", castillo);
-		}
-		*/
+			List<Castillo> castillos = new ArrayList<>();
+			castillos.add(createCastillo());
+			castillos.add(createCastillo());
+			castillos.add(createCastillo());
+			service.exportCastillosToXmlJackson("c:/temporal/castillo.xml", castillos);
+		
+		/*
 		try{
 			Castillo castillo = service.importCastilloFromXml("c:/temporal/castillo.xml");
 			System.out.println("CASTILLO LEÍDO DE XML CON LOS SIGUIENTES DATOS:");
@@ -28,9 +31,8 @@ public class Test {
 			System.out.println("Caballeros: ");
 			castillo.getCaballeros().forEach(System.out::println);
 			System.out.println("Dragones: ");
-			/*
 			castillo.getDragones().forEach(System.out::println);
-			*/
+		*/
 		} catch (CastilloXmlException e) {
 			e.printStackTrace();
 		}

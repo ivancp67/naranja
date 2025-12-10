@@ -1,27 +1,17 @@
 package ceu.dam.ad.ejerciciosTema2.xml.ejercicio10.modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Data;
+
+@Data
 public class Edicion {
 	private Integer año;
 	private String editorial;
-	
-	public Edicion() {
-	}
-	
+
 	public Edicion(Integer año, String editorial) {
 		super();
 		this.año = año;
-		this.editorial = editorial;
-	}
-	public Integer getAño() {
-		return año;
-	}
-	public void setAño(Integer año) {
-		this.año = año;
-	}
-	public String getEditorial() {
-		return editorial;
-	}
-	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
 

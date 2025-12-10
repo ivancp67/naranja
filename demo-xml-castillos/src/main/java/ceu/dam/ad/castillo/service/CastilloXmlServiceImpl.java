@@ -21,9 +21,38 @@ import org.w3c.dom.NodeList;
 import ceu.dam.ad.castillo.model.Caballero;
 import ceu.dam.ad.castillo.model.Castillo;
 import ceu.dam.ad.castillo.model.Dragon;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.dataformat.xml.XmlMapper;
 
 public class CastilloXmlServiceImpl implements CastilloXmlService {
 
+	@Override
+	public void exportCastilloToXmlJackson(String fileName, Castillo castillo) throws CastilloXmlException {
+		// XmlMapper xmlMapper = new XmlMapper();
+		JsonMapper xmlMapper = new JsonMapper();
+		File file = new File(fileName);
+		xmlMapper.writeValue(file, castillo);
+		
+	}
+	
+	@Override
+	public void exportCastillosToXmlJackson(String fileName, List<Castillo> castillos) throws CastilloXmlException {
+		// XmlMapper xmlMapper = new XmlMapper();
+		XmlMapper xmlMapper = new XmlMapper();
+		Castillos castillosObject = new Castillos();
+		castillosObject.setCastillos(castillos);
+		File file = new File(fileName);
+		xmlMapper.writeValue(file, castillosObject);
+		
+	}
+	
+	@Override
+	public Castillo importCastilloToXmlJackson(String fileName, Castillo castillo) throws CastilloXmlException {
+		XmlMapper xmlMapper = new XmlMapper();
+		File file = new File(fileName);
+		return xmlMapper.readValue(file, Castillo.class);
+		
+	}
 	
 	@Override
 	public void exportCastilloToXml(String fileName, Castillo castillo) throws CastilloXmlException {
