@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import lombok.Data;
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import tools.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @Data
 @JsonRootName("libros")

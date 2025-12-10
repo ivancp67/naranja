@@ -16,13 +16,16 @@ public class Libro {
 	
 	@JacksonXmlProperty(isAttribute = true)
 	private Integer isbn;
-	@JsonProperty("titulo")
 	private String titulo;
 	@JacksonXmlElementWrapper(localName = "autores")
 	@JsonProperty("autor")
 	private List<String> autores;
-	@JacksonXmlElementWrapper(localName = "edicion")
+	@JacksonXmlElementWrapper(localName = "ediciones")
+	@JsonProperty("edicion")
 	private List<Edicion> ediciones;
+	
+	public Libro() {
+	}
 	
 	public Libro(Integer isbn, String titulo) {
 		super();
