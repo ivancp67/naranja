@@ -1,6 +1,5 @@
 package ceu.dam.ad.ejerciciosTema2.xml.ejercicio10.modelo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
@@ -14,6 +13,7 @@ public class Edicion {
 		this.año = año;
 		this.editorial = editorial;
 	}
+	
 
 	@Override
 	public String toString() {

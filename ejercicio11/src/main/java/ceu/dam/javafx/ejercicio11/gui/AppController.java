@@ -8,6 +8,7 @@ import java.util.Map;
 
 import ceu.dam.javafx.ejercicio11.app.App;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -33,6 +34,17 @@ public class AppController {
 		} catch (IOException e) {
 			throw new RuntimeException("No se ha podido cargar fxml con ruta " + fxml, e);
 		}
+	}
+	
+	public Parent cargarVista(String fxml) {
+		try {
+			URL url = App.class.getResource(fxml);
+			FXMLLoader loader = new FXMLLoader(url);
+			return loader.load();
+		} catch (IOException e) {
+			throw new RuntimeException("No se ha podido cargar fxml con ruta "+ fxml, e);
+		}
+		
 	}
 	
 	public Object getUserDataObject(String key) {
