@@ -10,6 +10,7 @@ import ceu.dam.ad.model.Question;
 import ceu.dam.ad.model.QuestionType;
 import ceu.dam.ad.repository.QuestionRepository;
 import ceu.dam.ad.repository.QuestionTypeRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -22,9 +23,10 @@ public class QuestionServiceImpl implements QuestionService{
 	
 	
 	@Override
+	@Transactional
 	public Question createQuestion(Question question) throws QuestionValidateException {
 		if (!question.validate()) {
-			throw new QuestionValidateException("El formato de la pregunt ano existe");
+			throw new QuestionValidateException("El formato de la pregunta ano existe");
 		}
 		return repoQuestion.save(question);
 		
@@ -55,17 +57,18 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
+	@Transactional
 	public Question updateQuestion(Question question) throws QuestionNotFoundException, QuestionValidateException {
 		if (!question.validate()) {
-			throw new QuestionValidateException("El formato de la pregunt ano existe");
+			throw new QuestionValidateException("El formato de la pregunta no existe");
 		}
-		
+		getQuestionById(question.getId());
 		return repoQuestion.save(question);
 	}
 
 	@Override
 	public void deleteQuestion(Long id) {
-		
+		repoQuestion.deleteById(id);
 	}
 
 }
