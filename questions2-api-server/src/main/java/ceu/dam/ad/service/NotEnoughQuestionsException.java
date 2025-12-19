@@ -2,6 +2,11 @@ package ceu.dam.ad.service;
 
 public class NotEnoughQuestionsException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2534867160867982255L;
+
 	public NotEnoughQuestionsException() {
 	}
 
