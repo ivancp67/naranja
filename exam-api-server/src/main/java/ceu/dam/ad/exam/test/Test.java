@@ -1,4 +1,4 @@
-package ceu.dam.ad.test;
+package ceu.dam.ad.exam.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,26 +7,19 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ceu.dam.ad.model.Answer;
-import ceu.dam.ad.model.MultipleChoiceQuestion;
-import ceu.dam.ad.model.Question;
-import ceu.dam.ad.model.QuestionType;
-import ceu.dam.ad.model.SingleChoiceQuestion;
-import ceu.dam.ad.model.TrueFalseQuestion;
-import ceu.dam.ad.service.QuestionService;
+import ceu.dam.ad.exam.model.Answer;
+import ceu.dam.ad.exam.model.MultipleChoiceQuestion;
+import ceu.dam.ad.exam.model.Question;
+import ceu.dam.ad.exam.model.QuestionType;
+import ceu.dam.ad.exam.model.SingleChoiceQuestion;
+import ceu.dam.ad.exam.model.TrueFalseQuestion;
+import ceu.dam.ad.exam.service.QuestionService;
 
 @Component
 public class Test {
-	
+
 	@Autowired
     private QuestionService questionService;
-	
-	public void test2() {
-		questionService.incrementarLlamada();
-		questionService.incrementarLlamada();
-		Integer valor = questionService.incrementarLlamada();
-		System.out.println(valor);
-	}
 
 
     public void test() throws Exception {
@@ -48,7 +41,7 @@ public class Test {
         // ==== Crear preguntas TF ====
         TrueFalseQuestion q1 = new TrueFalseQuestion();
         q1.setText("Alan Turing es considerado el padre de la informática moderna.");
-        q1.setTypeCode(tfType);
+        q1.setType(tfType);
         List<Answer> q1Answers = new ArrayList<>();
         q1Answers.add(createAnswer("Verdadero", true));
         q1Answers.add(createAnswer("Falso", false));
@@ -67,7 +60,7 @@ public class Test {
         // ==== Crear preguntas SC ====
         SingleChoiceQuestion q2 = new SingleChoiceQuestion();
         q2.setText("¿Quién desarrolló el lenguaje de programación C?");
-        q2.setTypeCode(scType);
+        q2.setType(scType);
         List<Answer> q2Answers = new ArrayList<>();
         q2Answers.add(createAnswer("Dennis Ritchie", true));
         q2Answers.add(createAnswer("Bjarne Stroustrup", false));
@@ -87,7 +80,7 @@ public class Test {
         // ==== Crear preguntas MC ====
         MultipleChoiceQuestion q3 = new MultipleChoiceQuestion();
         q3.setText("Seleccione todos los lenguajes de programación creados en los años 70.");
-        q3.setTypeCode(mcType);
+        q3.setType(mcType);
         List<Answer> q3Answers = new ArrayList<>();
         q3Answers.add(createAnswer("C", true));
         q3Answers.add(createAnswer("Pascal", true));
@@ -122,7 +115,7 @@ public class Test {
 
     private void printQuestion(Question q) {
         System.out.println("Pregunta: " + q.getText());
-        System.out.println("Tipo: " + q.getTypeCode().getCode());
+        System.out.println("Tipo: " + q.getType().getCode());
         for (Answer a : q.getAnswers()) {
             System.out.println(" - " + a.getText() + " [" + (a.getCorrect() ? "Correcta" : "Incorrecta") + "]");
         }

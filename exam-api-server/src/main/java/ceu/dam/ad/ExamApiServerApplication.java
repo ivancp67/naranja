@@ -4,18 +4,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import ceu.dam.ad.test.Test;
+import ceu.dam.ad.exam.test.Test;
 
 @SpringBootApplication
-public class Questions2ApiServerApplication {
+public class ExamApiServerApplication {
 
 	public static void main(String[] args) {
-		try {
-			
-		ConfigurableApplicationContext context = SpringApplication.run(Questions2ApiServerApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(ExamApiServerApplication.class, args);
 		Test test = context.getBean(Test.class);
-		test.test2();
-		
+		try {
+			test.test();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

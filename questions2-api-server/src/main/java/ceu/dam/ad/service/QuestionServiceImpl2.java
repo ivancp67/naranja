@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
@@ -20,18 +19,14 @@ import ceu.dam.ad.repository.QuestionTypeRepository;
 import jakarta.transaction.Transactional;
 
 @Service
-@Primary
-public class QuestionServiceImpl implements QuestionService{
+public class QuestionServiceImpl2 implements QuestionService{
 
 	private final QuestionRepository repoQuestion;
 	private final QuestionTypeRepository repoQuestionType;
 	
 	private Integer numLlamadas;
 	
-	@Autowired
-	private ModelMapper mapper;
-	
-	public QuestionServiceImpl(QuestionRepository repoQuestion, QuestionTypeRepository repoQuestionType) {
+	public QuestionServiceImpl2(QuestionRepository repoQuestion, QuestionTypeRepository repoQuestionType) {
 		super();
 		this.repoQuestion = repoQuestion;
 		this.repoQuestionType = repoQuestionType;
@@ -39,8 +34,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	@Override
 	public Integer incrementarLlamada() {
-		
-		numLlamadas++;
+		numLlamadas+=10;
 		return numLlamadas;
 	}
 	

@@ -20,4 +20,6 @@ public interface QuestionService {
 	Question updateQuestion(Question question) throws QuestionNotFoundException, QuestionValidateException;
 
 	void deleteQuestion(Long id);
+
+	Integer incrementarLlamada();
 }

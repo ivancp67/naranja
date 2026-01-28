@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.0</version>
+		<version>4.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ceu.dam.ad</groupId>
-	<artifactId>questions2-api-server</artifactId>
+	<artifactId>proyecto-mongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>questions2-api-server</name>
-	<description>Api of students</description>
+	<name>proyecto-mongo</name>
+	<description>MongoDB</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,14 +32,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -47,21 +42,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<!-- Source: https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
-		<dependency>
-		    <groupId>org.modelmapper</groupId>
-		    <artifactId>modelmapper</artifactId>
-		    <version>3.2.6</version>
-		    <scope>compile</scope>
-		</dependency>
-		<!-- Source: https://mvnrepository.com/artifact/com.h2database/h2 -->
-		<dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <scope>test</scope>
 		</dependency>
 	</dependencies>
 
