@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class ApiKeyFilter extends OncePerRequestFilter{
+public class ApiKeyfilter extends OncePerRequestFilter{
 
 	@Value("${api.key}")
 	private String apiKey;
