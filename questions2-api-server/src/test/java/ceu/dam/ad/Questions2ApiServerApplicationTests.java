@@ -10,7 +10,6 @@ class Questions2ApiServerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
 	}
 
 }
