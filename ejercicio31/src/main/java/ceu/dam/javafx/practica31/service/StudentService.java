@@ -3,13 +3,7 @@ package ceu.dam.javafx.practica31.service;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import javax.print.DocFlavor.URL;
-
-import ceu.dam.javafx.practica31.modelo.Usuario;
+import java.net.URL;
 
 
 public class StudentService {
