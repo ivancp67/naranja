@@ -14,5 +14,4 @@ public class StudentsApiServerApplication {
 		Test test = context.getBean(Test.class);
 		test.test();
 	}
-
 }

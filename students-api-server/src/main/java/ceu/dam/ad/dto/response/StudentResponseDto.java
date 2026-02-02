@@ -13,7 +13,6 @@ public class StudentResponseDto {
 	private String firstName;
 	private String lastName;
 	private String email;
-	@Column(name = "date_of_birth")
 	private LocalDate birthday;
 	private String gender;
 	private String program;
