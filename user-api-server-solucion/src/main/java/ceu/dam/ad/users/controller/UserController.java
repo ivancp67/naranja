@@ -21,6 +21,7 @@ import ceu.dam.ad.users.exception.UserException;
 import ceu.dam.ad.users.exception.UserNotFoundException;
 import ceu.dam.ad.users.exception.UserUnauthorizedException;
 import ceu.dam.ad.users.model.User;
+import ceu.dam.ad.users.security.JwtUtil;
 import ceu.dam.ad.users.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -29,6 +30,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
+	@Autowired
+	private JwtUtil jwtUtil;
+	
 	@Autowired
 	private UserService service;
 	
@@ -48,8 +52,17 @@ public class UserController {
 	@PostMapping("/login")
 	@Operation(summary = "Permite hacer login a un usuario utilizando su username o su email")
 	public LoginResponseDto login(@RequestBody @Valid LoginRequestDto request) throws UserNotFoundException, UserUnauthorizedException, UserException {
-		User user = service.login(request.getLogin(), request.getPassword());
-		return new ModelMapper().map(user, LoginResponseDto.class);
+		// Validar credenciales
+	    User user = service.login(request.getLogin(), request.getPassword());
+	    
+	    // Mapear el usuario al DTO
+	    LoginResponseDto response = new ModelMapper().map(user, LoginResponseDto.class);
+	    
+	    // GENERAR Y AÑADIR EL TOKEN
+	    String token = jwtUtil.generateToken(user.getUsername()); // O user.getEmail() si prefieres
+	    response.setToken(token);
+	    
+	    return response;
 	}
 
 	@GetMapping("/{id}")

@@ -19,10 +19,11 @@ public class ProyectoMongoApplication {
 		ClienteService service = context.getBean(ClienteService.class);
 		
 		Cliente cliente = new Cliente();
-		cliente.setNombre("Blas de los montes");
+		cliente.setNombre("Manolo");
 		cliente.setEdad(32);
+		cliente.setApellido("Kuko Efigenio");
 		cliente.setDirecciones(new ArrayList<>());
-		for (int i = 0; i < args.length; i++) {
+		for (int i = 0; i < 3; i++) {
 			cliente.getDirecciones().add(new Direccion());
 			cliente.getDirecciones().get(i).setCiudad("Ciudad" + i);
 			cliente.getDirecciones().get(i).setCp("0000" + i);

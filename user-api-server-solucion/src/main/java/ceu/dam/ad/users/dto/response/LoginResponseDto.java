@@ -11,4 +11,6 @@ public class LoginResponseDto {
 	private String email;
 	private LocalDate createdDate;
 	private LocalDate lastLoginDate;
+	private String token; // AÑADIMOS ESTO
+    
 }

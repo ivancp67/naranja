@@ -4,31 +4,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
-	
-	@Autowired
-	private ApiKeyFilter apiKeyFilter; // nuestro filtro
-	
-	@Bean
-	SecurityFilterChain getSecurityFilterChain(HttpSecurity http) throws Exception{
-		
-		// Permitimos hacer peticiones POST/PUT/DELETE
-		http.csrf(c -> c.disable()); 
-		
-		// Desactivamos formulario de login añadido por spring security 
-		http.formLogin(f -> f.disable()); 
-		
-		// Añadimos nuestro filtro. Hay que hacerlo en algún lugar. Lo hacemos delante de otro
-		// ya existente de Spring Security
-		http.addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class);
-		
-		return http.build();
-	}
-	
-	
-	
+
+    private final JwtFilter jwtFilter;
+
+    SecurityConfig(JwtFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                .requestMatchers("/api/auth/**").permitAll() // endpoints de autenticación
+                .anyRequest().authenticated()
+            )
+            .sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        
+        return http.build();
+    }
 }
